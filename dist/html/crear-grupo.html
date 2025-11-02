@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang=en>
+<html lang="en">
 
 <head>
 	<!-- Google Tag Manager -->
@@ -13,9 +13,11 @@
 					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-5JBT92XZ');</script>
 	<!-- End Google Tag Manager -->
-	<meta charset="UTF-8">
-	<title>Gestor de tareas</title>
-	<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>Crear Grupo</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Crea un grupo para guardar tus tareas." />
+  <meta name="robots" content="index, follow" />
 </head>
 
 <body>
@@ -23,15 +25,33 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JBT92XZ" height="0" width="0"
 			style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
-	<h1>Crear nuevo grupo</h1>
-	<a href="ver-tareas.html">Volver</a><br>
 
-	<input type="text" id="nombre" placeholder="Nombre del grupo">
+  <br>
 
-	<button onclick="crearGrupo()">Crear grupo</button>
+  <img src="../images/goal.jpg"
+    alt="Una persona sobre unas letras gigantes que dicen GOAL mirando al horizonte con un catalejo">
 
-	<script type="module" src="../ts/scripts/crear-grupo.js"></script>
-	<script type="module" src="../ts/scripts/chat.js"></script>
+  <img src="../images/goal2.jpg" alt="Unas personitas cargando entre todas la palabra GOAL">
+
+  <br>
+
+  <h1>Crear nuevo grupo</h1>
+  <a href="ver-tareas.html">Volver</a><br />
+
+  <input type="text" id="nombre" placeholder="Nombre del grupo" />
+
+  <button onclick="crearGrupo()">Crear grupo</button>
+
+  <script type="module" src="../ts/scripts/crear-grupo.js"></script>
+  <script type="module" src="../ts/scripts/chat.js"></script>
+
+  <h1>Guias para tus tareas</h1>
+
+  <a href="https://monday.com/blog/productivity" target="_blank" rel="noopener noreferrer">Consejos de Monday</a>
+  <a href="https://basecamp.com/paths" target="_blank" rel="noopener noreferrer">Caminos de basecamp</a>
+  <a href="https://wrike.com/blog" target="_blank" rel="noopener noreferrer">Blog de Wrike</a>
+  <a href="https://slack.com/resources" target="_blank" rel="noopener noreferrer">Recursos de Slack</a>
+  <a href="https://notion.so/templates" target="_blank" rel="noopener noreferrer">Plantillas de Notion</a>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang=en>
+<html lang="en">
 
 <head>
 	<!-- Google Tag Manager -->
@@ -13,9 +13,11 @@
 					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-5JBT92XZ');</script>
 	<!-- End Google Tag Manager -->
-	<meta charset="UTF-8">
-	<title>Gestor de tareas</title>
-	<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>Editar Tarea</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Edita tu tarea para que refleje más tus objetivos." />
+  <meta name="robots" content="index, follow" />
 </head>
 
 <body>
@@ -23,20 +25,36 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JBT92XZ" height="0" width="0"
 			style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
-	<h1>Tarea a editar</h1>
-	<a href="ver-tareas.html">Volver</a><br>
 
-	<input type="text" id="titulo" placeholder="titulo">
-	<input type="text" id="descripcion" placeholder="descripcion">
-	<input type="text" id="estado" placeholder="estado">
-	<input type="text" id="fechaCreacion" placeholder="fechaCreacion">
-	<input type="text" id="grupoId" placeholder="grupo">
+  <br>
 
+  <img src="../images/accomplishment.jpg"
+    alt="Una persona sobre unas letras gigantes que dicen GOAL mirando al horizonte con un catalejo">
 
-	<button onclick="editar()">Editar</button>
+  <img src="../images/archievement.jpg" alt="Un hombre subiendo unas escaleras hacia un trofeo">
 
-	<script type="module" src="../ts/scripts/editar-tarea.js"></script>
-	<script type="module" src="../ts/scripts/chat.js"></script>
+  <br>
+
+  <h1>Tarea a editar</h1>
+  <a href="ver-tareas.html">Volver</a><br />
+
+  <input type="text" id="titulo" placeholder="titulo" />
+  <input type="text" id="descripcion" placeholder="descripcion" />
+  <input type="text" id="estado" placeholder="estado" />
+  <input type="text" id="fechaCreacion" placeholder="fechaCreacion" />
+  <input type="text" id="grupoId" placeholder="grupo" />
+
+  <button onclick="editar()">Editar</button>
+
+  <script type="module" src="../ts/scripts/editar-tarea.js"></script>
+  <script type="module" src="../ts/scripts/chat.js"></script>
+
+  <h1>Artículos para ganadores</h1>
+  <a href="https://toggl.com/blog" target="_blank" rel="noopener noreferrer">Blog de Toggl</a>
+  <a href="https://clockify.me/blog" target="_blank" rel="noopener noreferrer">Blog de Clockify</a>
+  <a href="https://blog.rescuetime.com/" target="_blank" rel="noopener noreferrer">Blog de RescueTime</a>
+  <a href="https://www.notion.so/help/guides" target="_blank" rel="noopener noreferrer">Guías de Notion</a>
+  <a href="https://asana.com/resources/" target="_blank" rel="noopener noreferrer">Recursos de Asana</a>
 </body>
 
 </html>

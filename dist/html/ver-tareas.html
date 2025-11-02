@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang=en>
+<!doctype html>
+<html lang="en">
 
 <head>
 	<!-- Google Tag Manager -->
@@ -12,9 +12,11 @@
 					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-5JBT92XZ');</script>
 	<!-- End Google Tag Manager -->
-	<meta charset="UTF-8">
-	<title>Gestor de tareas</title>
-	<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>Ver Tareas</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Mira y gestiona tus grupos de tareas. Recuerda qué tienes pendiente." />
+  <meta name="robots" content="index, follow" />
 </head>
 
 <body>
@@ -22,16 +24,25 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JBT92XZ" height="0" width="0"
 			style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
-	<button onclick="logout()">Cerrar sesión</button>
-	<h1>Tareas</h1>
-	<a href="main.html">Volver</a>
-	<br><br>
-	<a href="crear-grupo.html">Crear nuevo grupo</a>
 
-	<script type="module" src="../ts/scripts/ver-tareas.js"></script>
-	<script type="module" src="../ts/scripts/main.js"></script>
-	<script type="module" src="../ts/scripts/chat.js"></script>
+  <br>
 
+  <img src="../images/task.png" alt="Una libreta con tareas escritas y un lapiz al lado">
+  <h1>Blogs de productividad</h1>
+  <a href="https://notion.so/blog" target="_blank" rel="noopener noreferrer">Blog de Notion</a>
+  <a href="https://evernote.com/blog" target="_blank" rel="noopener noreferrer">Blog de Evernote</a>
+
+  <br>
+
+  <button onclick="logout()">Cerrar sesión</button>
+  <h1>Tareas</h1>
+  <a href="main.html">Volver</a>
+  <br /><br />
+  <a href="crear-grupo.html">Crear nuevo grupo</a>
+
+  <script type="module" src="../ts/scripts/ver-tareas.js"></script>
+  <script type="module" src="../ts/scripts/main.js"></script>
+  <script type="module" src="../ts/scripts/chat.js"></script>
 </body>
 
 </html>
