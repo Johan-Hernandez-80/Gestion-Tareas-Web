@@ -1,29 +1,101 @@
-/* General styles for all pages */
+/* CSS simplificado: estilos básicos y fáciles de mantener */
+
+/* Paleta mínima */
+:root {
+  --primary: #2563eb;
+  --accent: #16a34a;
+  --bg: #f5f7fa;
+  --text: #1f2937;
+  --border: #d1d5db;
+}
+
+/* Reset ligero */
+* { box-sizing: border-box; }
+body { margin: 0; }
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  margin: 0;
-  padding: 20px;
+  font-family: system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 24px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #333;
+  margin: 0 0 14px;
+  font-weight: 600;
 }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
 
-input, button {
-  font-family: inherit;
-  padding: 8px 12px;
-  margin: 5px 0;
+p { margin: 0 0 12px; }
+
+/* Enlaces */
+a {
+  color: var(--primary);
+  text-decoration: none;
 }
+a:hover { text-decoration: underline; }
 
+/* Botones */
 button {
-  cursor: pointer;
-  background-color: #4CAF50;
-  color: white;
+  background: var(--accent);
+  color: #fff;
   border: none;
+  padding: 8px 14px;
+  margin: 6px 0;
   border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+}
+button:hover { background: #12833c; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Inputs */
+input[type="text"], input[type="password"], input[type="email"], input[type="number"] {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  margin: 6px 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+}
+input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+/* Imágenes */
+img {
+  display: block;
+  margin: 16px auto; /* centradas */
+  border-radius: 6px;
+  width: 100%;
+  max-width: 200px; /* tamaño base más pequeño */
+  height: auto;
 }
 
-button:hover {
-  background-color: #45a049;
+/* Tamaños estandarizados opcionales */
+.img-sm { max-width: 120px !important; }
+.img-md { max-width: 180px !important; }
+.img-lg { max-width: 240px !important; }
+
+/* Para filas de múltiples imágenes */
+.img-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.img-row img { margin: 8px; }
+
+/* Listas de enlaces (si se desea agrupar) */
+.links { display: flex; flex-wrap: wrap; gap: 12px; }
+.links a { padding: 4px 0; }
+
+/* Responsive simple */
+@media (max-width: 600px) {
+  body { padding: 16px; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+  button { width: 100%; }
 }
+
+
