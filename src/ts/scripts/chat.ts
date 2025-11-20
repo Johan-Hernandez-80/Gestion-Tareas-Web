@@ -1,8 +1,6 @@
-/*
-  Simple floating chat widget that talks to a local Gemini proxy via POST http://localhost:3005/chat
-  Usage: Just ensure this module is loaded on any page. It will auto-initialize a widget.
-*/
-
+/**
+ * Opciones de configuración para el widget de chat.
+ */
 type ChatOptions = {
   endpoint?: string;
   model?: string;
@@ -11,11 +9,18 @@ type ChatOptions = {
   maxOutputTokens?: number;
 };
 
+/**
+ * Mensaje individual dentro del historial del chat.
+ */
 type ChatMessage = {
   role: 'user' | 'assistant' | 'system' | 'error';
   content: string;
 };
 
+/**
+ * Widget de chat incrustado que permite enviar mensajes a un backend
+ * y mostrar respuestas dentro de una interfaz minimalista.
+ */
 class ChatWidget {
   private options: Required<ChatOptions>;
   private container: HTMLDivElement;
@@ -29,6 +34,10 @@ class ChatWidget {
   private sending = false;
   private history: ChatMessage[] = [];
 
+  /**
+   * Crea e inicializa el widget de chat.
+   * @param opts Opciones de configuración.
+   */
   constructor(opts: ChatOptions = {}) {
     this.options = {
       endpoint: opts.endpoint ?? 'http://localhost:3005/chat',
@@ -57,6 +66,9 @@ class ChatWidget {
     this.attachEvents();
   }
 
+  /**
+   * Construye y agrega el widget al DOM.
+   */
   private mount() {
     this.injectStyles();
     this.header.innerHTML = `
@@ -74,10 +86,12 @@ class ChatWidget {
     this.container.appendChild(this.body);
     document.body.appendChild(this.container);
 
-    // Initial system hint (not sent to server; just UI)
     this.addMessage({ role: 'system', content: 'Estás chateando con Gemini. Haz tu pregunta.' });
   }
 
+  /**
+   * Registra listeners para interacción del usuario.
+   */
   private attachEvents() {
     const minBtn = this.header.querySelector('.gtw-min-btn') as HTMLButtonElement | null;
     minBtn?.addEventListener('click', () => this.toggle());
@@ -92,17 +106,28 @@ class ChatWidget {
     });
   }
 
+  /**
+   * Alterna entre mostrar y ocultar la ventana del chat.
+   */
   private toggle() {
     this.isCollapsed = !this.isCollapsed;
     this.body.style.display = this.isCollapsed ? 'none' : 'flex';
   }
 
+  /**
+   * Marca si el widget está enviando un mensaje.
+   * @param s Estado de envío.
+   */
   private setSending(s: boolean) {
     this.sending = s;
     this.textarea.disabled = s;
     this.sendBtn.disabled = s;
   }
 
+  /**
+   * Agrega un mensaje a la interfaz y al historial.
+   * @param msg Mensaje a agregar.
+   */
   private addMessage(msg: ChatMessage) {
     this.history.push(msg);
     const bubble = document.createElement('div');
@@ -112,6 +137,9 @@ class ChatWidget {
     this.list.scrollTop = this.list.scrollHeight;
   }
 
+  /**
+   * Envía el mensaje del usuario y procesa la respuesta del servidor.
+   */
   private async handleSend() {
     const text = this.textarea.value.trim();
     if (!text || this.sending) return;
@@ -119,7 +147,6 @@ class ChatWidget {
 
     this.addMessage({ role: 'user', content: text });
 
-    // Loading stub
     const loading: ChatMessage = { role: 'assistant', content: 'Pensando…' };
     const loadingEl = document.createElement('div');
     loadingEl.className = 'gtw-bubble gtw-assistant gtw-loading';
@@ -145,7 +172,6 @@ class ChatWidget {
         throw new Error(`HTTP ${response.status} ${response.statusText}`);
       }
 
-      // Try to parse as JSON first; fall back to text
       let assistantText = '';
       const contentType = response.headers.get('content-type') || '';
       if (contentType.includes('application/json')) {
@@ -168,13 +194,15 @@ class ChatWidget {
     }
   }
 
+  /**
+   * Intenta obtener texto interpretable desde una respuesta JSON variable.
+   * @param data Contenido recibido.
+   */
   private extractText(data: any): string {
-    // Be tolerant with potential shapes
     if (!data) return '';
     if (typeof data === 'string') return data;
     const candidatesPath = () => {
       try {
-        // Some APIs return candidates[0].content[0].text or similar
         if (Array.isArray(data.candidates) && data.candidates.length) {
           const c0 = data.candidates[0];
           if (typeof c0 === 'string') return c0;
@@ -200,6 +228,9 @@ class ChatWidget {
     );
   }
 
+  /**
+   * Inserta las reglas de estilo necesarias para el widget.
+   */
   private injectStyles() {
     if (document.getElementById('gtw-chat-styles')) return;
     const style = document.createElement('style');
@@ -227,7 +258,7 @@ class ChatWidget {
   }
 }
 
-// Auto-init on DOM ready
+// Auto init al cargar
 (() => {
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     new ChatWidget();
