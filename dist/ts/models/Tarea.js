@@ -1,4 +1,8 @@
 import { BaseModel } from "./BaseModel.js";
+/**
+ * Representa una tarea dentro del sistema, con información básica
+ * como título, descripción, estado, fecha de creación y grupo asignado.
+ */
 export class Tarea extends BaseModel {
     constructor(id, titulo, descripcion, estado, fechaCreacion, grupoId) {
         var _a;
@@ -18,13 +22,21 @@ export class Tarea extends BaseModel {
         if (fechaCreacion)
             this.fechaCreacion = fechaCreacion;
         if (grupoId !== undefined)
-            this.grupoId = grupoId; // !== permite que grupo 0 sea valido
+            this.grupoId = grupoId;
     }
+    /**
+     * Construye una tarea a partir de un objeto JSON crudo.
+     * @param data Objeto con los campos necesarios para crear una tarea.
+     */
     static fromJSON(data) {
         var _a;
-        return new Tarea(data.id, data.titulo, data.descripcion, data.estado, data.fechaCreacion, (_a = data.grupoId) !== null && _a !== void 0 ? _a : 0 // ?? significa: si el valor de grupoId en data es indefinido, grupoId sera 0
-        );
+        return new Tarea(data.id, data.titulo, data.descripcion, data.estado, data.fechaCreacion, (_a = data.grupoId) !== null && _a !== void 0 ? _a : 0);
     }
+    /**
+     * Reemplaza dentro del arreglo de tareas la instancia que coincida
+     * con el id de esta tarea.
+     * @param tareas Lista donde se buscará y actualizará la tarea.
+     */
     selfUpdate(tareas) {
         tareas.forEach((t, i) => {
             if (t.id === (this ? this.id : undefined)) {

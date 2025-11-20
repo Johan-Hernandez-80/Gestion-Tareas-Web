@@ -1,5 +1,9 @@
 import { Tarea } from "./Tarea.js";
 import { Grupo } from "./Grupo.js";
+/**
+ * Representa un usuario dentro del sistema, incluyendo información de acceso,
+ * sus tareas y los grupos asociados.
+ */
 export class Usuario {
     constructor(username, contrasena, email) {
         this.username = "defaultUsername";
@@ -14,6 +18,11 @@ export class Usuario {
         if (email)
             this.email = email;
     }
+    /**
+     * Crea una instancia de Usuario a partir de un objeto plano JSON.
+     * @param data Objeto con las propiedades del usuario.
+     * @returns Instancia de Usuario reconstruida.
+     */
     static fromJSON(data) {
         const usuario = new Usuario(data.username, data.contrasena, data.email);
         if (Array.isArray(data.tareas))
@@ -22,6 +31,11 @@ export class Usuario {
             usuario.setGrupos = data.grupos;
         return usuario;
     }
+    /**
+    * Actualiza una lista de usuarios reemplazando la entrada que coincida
+    * con el correo electrónico del usuario actual.
+    * @param usuarios Lista de usuarios donde se realizará la actualización.
+    */
     selfUpdate(usuarios) {
         usuarios.forEach((u, i) => {
             if (u.getEmail === this.getEmail) {

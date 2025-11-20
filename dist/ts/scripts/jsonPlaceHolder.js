@@ -8,6 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { Tarea } from "../models/Tarea.js";
+/**
+ * Carga tareas desde la API de JSONPlaceholder y las convierte
+ * en instancias de Tarea con un mapeo básico de campos.
+ * @return Lista de tareas generadas a partir de los datos remotos.
+ */
 export function loadTareasFromAPI() {
     return __awaiter(this, void 0, void 0, function* () {
         const res = yield fetch("https://jsonplaceholder.typicode.com/todos");
